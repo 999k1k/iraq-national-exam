@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>ملف للطباعة</title>
+<style>
+@page{size:A4;margin:16mm 14mm}
+body{font-family:'Cairo','Noto Kufi Arabic','Noto Sans Arabic',Tahoma,sans-serif;color:#1b2333;font-size:12.5px;line-height:1.75}
+.ltr{direction:ltr;text-align:left;font-family:'DejaVu Sans','Segoe UI',Arial,sans-serif}
+.cover{background:linear-gradient(135deg,#0b5f50,#14254f);color:#fff;border-radius:14px;padding:22px 24px;margin-bottom:18px}
+.cover h1{margin:0;font-size:26px}.cover p{margin:4px 0 0;opacity:.9}
+h2{color:#14254f;border-inline-start:5px solid #0e7c66;padding-inline-start:10px;font-size:17px;margin:18px 0 8px;break-after:avoid}
+table{width:100%;border-collapse:collapse;margin:6px 0;break-inside:avoid}
+th,td{border:1px solid #d6dce8;padding:5px 7px;text-align:inherit;vertical-align:top}
+th{background:#eef2f8}
+.tip{background:#e6f4f1;border-radius:8px;padding:8px 10px;margin-top:6px}
+.q{border:1px solid #e1e6ef;border-radius:8px;padding:8px 10px;margin-bottom:7px;break-inside:avoid}
+.q .t{font-size:10.5px;color:#667085}.q ol{margin:4px 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.q .a{color:#0e7c66;font-weight:700}.q .e{color:#555;font-size:11.5px}
+.passage{background:#fffaf0;border:1px dashed #e9cf8f;border-radius:8px;padding:8px 10px;margin:8px 0;break-inside:avoid}
+.foot{margin-top:16px;color:#667085;font-size:10.5px;text-align:center}
+</style></head><body><div id="out"></div>
+<script src="js/data-arabic.js"></script><script src="js/data-english.js"></script><script src="js/data-computer.js"></script><script src="js/notes.js"></script>
+<script>
+const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const doc=(new URLSearchParams(location.search).get('doc')||'arabic-notes').split('-');
+const s=doc[0], kind=doc[1], out=document.getElementById('out');
+const names={arabic:'اللغة العربية',english:'اللغة الإنكليزية (INELT)',computer:'الحاسوب (INCPT)'};
+const foot='<div class="foot">منصة الاختبار الوطني — ملف تدريبي مستقل غير تابع للوزارة • للحجز الرسمي: inpt.rdd.edu.iq</div>';
+if(kind==='notes'){
+ const N=NOTES[s];
+ out.innerHTML=`<div class="cover"><h1>${N.title}</h1><p>${N.sub}</p><p>الاختبار الوطني الموحد للمتقدمين للدراسات العليا — العراق</p></div>`+
+  N.sections.map(x=>`<h2>${x.h}</h2><div class="${s==='english'?'ltr':''}">${x.html}</div>`).join('')+foot;
+}else{
+ const B=BANK[s], L=B[0].ltr, keys=L?['A','B','C','D']:['أ','ب','ج','د'];
+ let lastP=null, html=`<div class="cover"><h1>بنك أسئلة ${names[s]} مع الإجابات</h1><p>${B.length} سؤالاً تدريبياً مع الإجابة الصحيحة والشرح — الإجابة الصحيحة مذكورة أسفل كل سؤال.</p></div>`;
+ const topics=[...new Set(B.map(q=>q.t))];
+ topics.forEach(t=>{html+=`<h2>${esc(t)}</h2>`;B.filter(q=>q.t===t).forEach((q,i)=>{
+  if(q.p&&q.p!==lastP){lastP=q.p;const P=PASSAGES[q.p];html+=`<div class="passage ltr"><b>Passage: ${esc(P.title)}</b><br>${esc(P.text)}</div>`;}
+  // ترتيب ثابت للخيارات مع إخفاء موقع الإجابة: تدوير حسب رقم السؤال
+  const r=(i*3+1)%4, opts=q.o.map((o,j)=>({o,c:j===0})); const rot=opts.slice(r).concat(opts.slice(0,r));
+  const ci=rot.findIndex(x=>x.c);
+  html+=`<div class="q"><div class="t">${q.id}</div><div class="${L?'ltr':''}"><b>${i+1}. ${esc(q.q)}</b><ol type="${L?'A':'1'}" style="list-style:none">${rot.map((x,j)=>`<li>${keys[j]}) ${esc(x.o)}</li>`).join('')}</ol></div>
+   <div class="a ${L?'ltr':''}">✔ ${L?'Answer':'الإجابة'}: ${keys[ci]}) ${esc(q.o[0])}</div><div class="e">💡 ${esc(q.e)}</div></div>`;});});
+ out.innerHTML=html+foot;
+}
+document.title=doc.join('-');
+</script></body></html>
