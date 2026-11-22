@@ -2,18 +2,28 @@
 <html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>ملف للطباعة</title>
 <style>
 @page{size:A4;margin:16mm 14mm}
-body{font-family:'Cairo','Noto Kufi Arabic','Noto Sans Arabic',Tahoma,sans-serif;color:#1b2333;font-size:12.5px;line-height:1.75}
-.ltr{direction:ltr;text-align:left;font-family:'DejaVu Sans','Segoe UI',Arial,sans-serif}
-.cover{background:linear-gradient(135deg,#0b5f50,#14254f);color:#fff;border-radius:14px;padding:22px 24px;margin-bottom:18px}
-.cover h1{margin:0;font-size:26px}.cover p{margin:4px 0 0;opacity:.9}
-h2{color:#14254f;border-inline-start:5px solid #0e7c66;padding-inline-start:10px;font-size:17px;margin:18px 0 8px;break-after:avoid}
+@font-face{font-family:'Plex';font-weight:400;src:url(assets/fonts/plex-arabic-400.woff2) format('woff2');unicode-range:U+0600-06FF,U+FB50-FDFF,U+FE70-FEFF}
+@font-face{font-family:'Plex';font-weight:400;src:url(assets/fonts/plex-arabic-latin-400.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:'Inter';font-weight:400;src:url(assets/fonts/inter-400.woff2) format('woff2')}
+@font-face{font-family:'Plex';font-weight:600;src:url(assets/fonts/plex-arabic-600.woff2) format('woff2');unicode-range:U+0600-06FF,U+FB50-FDFF,U+FE70-FEFF}
+@font-face{font-family:'Plex';font-weight:600;src:url(assets/fonts/plex-arabic-latin-600.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:'Inter';font-weight:600;src:url(assets/fonts/inter-600.woff2) format('woff2')}
+@font-face{font-family:'Plex';font-weight:700;src:url(assets/fonts/plex-arabic-700.woff2) format('woff2');unicode-range:U+0600-06FF,U+FB50-FDFF,U+FE70-FEFF}
+@font-face{font-family:'Plex';font-weight:700;src:url(assets/fonts/plex-arabic-latin-700.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:'Inter';font-weight:700;src:url(assets/fonts/inter-700.woff2) format('woff2')}
+
+body{font-family:'Plex','Noto Sans Arabic',Tahoma,sans-serif;color:#111827;font-size:12px;line-height:1.8}
+.ltr{direction:ltr;text-align:left;font-family:'Inter','Plex',Arial,sans-serif;line-height:1.6}
+.cover{border-top:4px solid #0f3d5e;border-bottom:1px solid #e5e7eb;padding:16px 0 14px;margin-bottom:18px}
+.cover h1{margin:0;font-size:24px;color:#0f3d5e;font-weight:700}.cover p{margin:4px 0 0;color:#4b5563}
+h2{color:#0f3d5e;border-bottom:1px solid #e5e7eb;padding-bottom:4px;font-size:16px;font-weight:700;margin:18px 0 8px;break-after:avoid}
 table{width:100%;border-collapse:collapse;margin:6px 0;break-inside:avoid}
 th,td{border:1px solid #d6dce8;padding:5px 7px;text-align:inherit;vertical-align:top}
-th{background:#eef2f8}
-.tip{background:#e6f4f1;border-radius:8px;padding:8px 10px;margin-top:6px}
+th{background:#f9fafb;font-weight:600}
+.tip{background:#eef3f7;border-radius:8px;padding:8px 10px;margin-top:6px}
 .q{border:1px solid #e1e6ef;border-radius:8px;padding:8px 10px;margin-bottom:7px;break-inside:avoid}
 .q .t{font-size:10.5px;color:#667085}.q ol{margin:4px 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
-.q .a{color:#0e7c66;font-weight:700}.q .e{color:#555;font-size:11.5px}
+.q .a{color:#15803d;font-weight:700}.q .e{color:#555;font-size:11.5px}
 .passage{background:#fffaf0;border:1px dashed #e9cf8f;border-radius:8px;padding:8px 10px;margin:8px 0;break-inside:avoid}
 .foot{margin-top:16px;color:#667085;font-size:10.5px;text-align:center}
 </style></head><body><div id="out"></div>
@@ -38,7 +48,7 @@ if(kind==='notes'){
   const r=(i*3+1)%4, opts=q.o.map((o,j)=>({o,c:j===0})); const rot=opts.slice(r).concat(opts.slice(0,r));
   const ci=rot.findIndex(x=>x.c);
   html+=`<div class="q"><div class="t">${q.id}</div><div class="${L?'ltr':''}"><b>${i+1}. ${esc(q.q)}</b><ol type="${L?'A':'1'}" style="list-style:none">${rot.map((x,j)=>`<li>${keys[j]}) ${esc(x.o)}</li>`).join('')}</ol></div>
-   <div class="a ${L?'ltr':''}">✔ ${L?'Answer':'الإجابة'}: ${keys[ci]}) ${esc(q.o[0])}</div><div class="e">💡 ${esc(q.e)}</div></div>`;});});
+   <div class="a ${L?'ltr':''}">✔ ${L?'Answer':'الإجابة'}: ${keys[ci]}) ${esc(q.o[0])}</div><div class="e">${esc(q.e)}</div></div>`;});});
  out.innerHTML=html+foot;
 }
 document.title=doc.join('-');

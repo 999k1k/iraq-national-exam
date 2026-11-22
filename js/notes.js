@@ -13,13 +13,13 @@ sections:[
 <tr><td>الممنوع من الصرف</td><td>الضمة</td><td>الفتحة</td><td>الفتحة (نيابة عن الكسرة)</td></tr>
 <tr><td>الأفعال الخمسة (يفعلان، تفعلون، تفعلين...)</td><td>ثبوت النون</td><td>حذف النون</td><td>حذف النون (جزم)</td></tr>
 <tr><td>المضارع المعتل الآخر</td><td>ضمة مقدرة</td><td>فتحة (ظاهرة على الواو والياء)</td><td>حذف حرف العلة (جزم)</td></tr></table>
-<div class="tip">💡 الاسم المنقوص (القاضي): يُرفع ويُجر بحركة مقدرة على الياء، ويُنصب بفتحة ظاهرة. وإذا كان نكرة في الرفع والجر حُذفت ياؤه: «جاء قاضٍ».</div>`},
+<div class="tip">الاسم المنقوص (القاضي): يُرفع ويُجر بحركة مقدرة على الياء، ويُنصب بفتحة ظاهرة. وإذا كان نكرة في الرفع والجر حُذفت ياؤه: «جاء قاضٍ».</div>`},
 {h:'2. النواسخ',html:`<ul>
 <li><b>كان وأخواتها</b> (أصبح، أضحى، أمسى، ظلّ، بات، صار، ليس، ما زال، ما برح، ما فتئ، ما انفكّ، ما دام): ترفع الاسم وتنصب الخبر ← «كان الجوُّ جميلاً».</li>
 <li><b>إنّ وأخواتها</b> (أنّ، كأنّ، لكنّ، ليت، لعلّ): تنصب الاسم وترفع الخبر ← «إنّ العلمَ نورٌ».</li>
 <li><b>ظنّ وأخواتها</b> (أفعال القلوب: ظنّ، حسب، خال، زعم، علم، رأى، وجد): تنصب مفعولين أصلهما مبتدأ وخبر ← «ظننتُ الامتحانَ سهلاً».</li>
 <li><b>لا النافية للجنس</b>: تعمل عمل إنّ. اسمها: مفرد (يُبنى: لا رجلَ)، مضاف (لا طالبَ علمٍ)، شبيه بالمضاف (لا راغبًا في الشر).</li></ul>
-<div class="tip">💡 ضمائر الرفع المتصلة بكان (كنتُ، كانوا) هي اسم كان. أما تاء «كانتْ» الساكنة فهي تاء التأنيث لا محل لها.</div>`},
+<div class="tip">ضمائر الرفع المتصلة بكان (كنتُ، كانوا) هي اسم كان. أما تاء «كانتْ» الساكنة فهي تاء التأنيث لا محل لها.</div>`},
 {h:'3. المنصوبات المهمة',html:`<table><tr><th>المنصوب</th><th>تعريفه</th><th>مثال</th></tr>
 <tr><td>المفعول المطلق</td><td>مصدر يؤكد الفعل أو يبيّن نوعه أو عدده</td><td>قرأتُ قراءةً متأنيةً (نوع)</td></tr>
 <tr><td>المفعول لأجله</td><td>مصدر قلبي يبيّن سبب الفعل</td><td>وقفتُ احترامًا</td></tr>
@@ -27,7 +27,7 @@ sections:[
 <tr><td>الحال</td><td>نكرة تبيّن هيئة صاحبها (معرفة غالبًا)</td><td>رأيتُ القمرَ منيرًا</td></tr>
 <tr><td>التمييز</td><td>نكرة تزيل الإبهام (بعد العدد والمقادير)</td><td>اشتريتُ عشرين كتابًا</td></tr>
 <tr><td>المستثنى بإلا</td><td>يُنصب إذا كان الكلام تامًا مثبتًا</td><td>حضر الطلابُ إلا زيدًا</td></tr></table>
-<div class="tip">💡 الاستثناء المفرّغ (منفي ومحذوف المستثنى منه): يُعرب ما بعد إلا حسب موقعه ← «ما جاء إلا محمدٌ» (فاعل).</div>`},
+<div class="tip">الاستثناء المفرّغ (منفي ومحذوف المستثنى منه): يُعرب ما بعد إلا حسب موقعه ← «ما جاء إلا محمدٌ» (فاعل).</div>`},
 {h:'4. العدد',html:`<ul><li>1 و2: يطابقان المعدود.</li><li>3 – 10: تخالف المعدود (ثلاثةُ كتبٍ / ثلاثُ طالباتٍ).</li>
 <li>11 و12: يطابقان في الجزأين (أحدَ عشرَ كتابًا / إحدى عشرةَ قصةً).</li><li>13 – 19: الجزء الأول يخالف والثاني يطابق (خمسةَ عشرَ ميلاً / خمسَ عشرةَ ورقةً).</li>
 <li>تمييز 3–10 جمع مجرور، وتمييز 11–99 مفرد منصوب.</li></ul>`},
@@ -107,7 +107,7 @@ sections:[
 <li>Reading: read the <b>questions first</b>, then scan the passage. Question types: main idea, specific detail, word meaning in context, synonym/opposite, what a pronoun refers to (it/they), NOT mentioned, type of text.</li>
 <li>For "NOT mentioned" questions, tick each option you find in the text; the one left is the answer.</li>
 <li>Pronoun reference: look at the nearest noun <b>before</b> the pronoun that matches in number.</li></ul>
-<div class="tip">💡 According to student reports on Telegram (unofficial), the INELT is often divided into four parts of about 10 questions each: grammar, language functions, conversation and reading. Each question is worth 2.5 marks (40 × 2.5 = 100).</div>`},
+<div class="tip">According to student reports on Telegram (unofficial), the INELT is often divided into four parts of about 10 questions each: grammar, language functions, conversation and reading. Each question is worth 2.5 marks (40 × 2.5 = 100).</div>`},
 {h:'6. Useful vocabulary',html:`<table><tr><th>Word</th><th>Meaning</th><th>Synonym / Opposite</th></tr>
 <tr><td>ancient</td><td>قديم</td><td>≠ modern</td></tr><tr><td>rapid</td><td>سريع</td><td>= fast</td></tr>
 <tr><td>accurate</td><td>دقيق</td><td>≠ inaccurate</td></tr><tr><td>essential</td><td>ضروري</td><td>= necessary</td></tr>
@@ -143,7 +143,7 @@ sections:[
 <tr><td>Spyware</td><td>يتجسس ويجمع المعلومات</td></tr><tr><td>Phishing</td><td>رسائل مزيفة لسرقة كلمات المرور</td></tr>
 <tr><td>Firewall</td><td>جدار ناري يراقب حركة الشبكة</td></tr><tr><td>Antivirus</td><td>برنامج مكافحة الفيروسات</td></tr>
 <tr><td>Encryption</td><td>تشفير البيانات</td></tr><tr><td>Backup</td><td>نسخة احتياطية</td></tr></table>
-<div class="tip">💡 كلمة المرور القوية: 8 أحرف فأكثر تمزج حروفاً كبيرة وصغيرة وأرقاماً ورموزاً. فعّل المصادقة الثنائية 2FA.</div>`},
+<div class="tip">كلمة المرور القوية: 8 أحرف فأكثر تمزج حروفاً كبيرة وصغيرة وأرقاماً ورموزاً. فعّل المصادقة الثنائية 2FA.</div>`},
 {h:'4. Microsoft Word 2016',html:`<ul><li>الامتداد <b>.docx</b>. التبويبات: Home (تنسيق الخط والفقرة)، Insert (صورة، جدول، رأس وتذييل، ارتباط)، Design، Layout (الهوامش، الاتجاه، الحجم)، References (جدول المحتويات، الحواشي)، Mailings، Review (التدقيق، تعقب التغييرات)، View.</li>
 <li>Ctrl+B غامق، Ctrl+I مائل، Ctrl+U تسطير، Ctrl+E توسيط، Ctrl+L يسار، Ctrl+R يمين، Ctrl+J ضبط.</li>
 <li>Ctrl+N جديد، Ctrl+O فتح، Ctrl+S حفظ، F12 حفظ باسم، Ctrl+P طباعة، Ctrl+F بحث، Ctrl+H استبدال، Ctrl+K ارتباط، Ctrl+Enter فاصل صفحة، F7 تدقيق إملائي.</li>
@@ -166,6 +166,6 @@ sections:[
 <li>البريد: To، CC نسخة مرئية، BCC نسخة مخفية، Subject الموضوع، Attachment مرفق، Drafts مسودات، Spam بريد مزعج، Inbox الوارد، Sent المرسل.</li>
 <li>Upload رفع، Download تنزيل، Cloud storage تخزين سحابي (Google Drive, OneDrive).</li>
 <li><b>AI</b>: قدرة الحاسوب على أداء مهام تحتاج ذكاءً بشرياً. Machine Learning تعلّم من البيانات، NLP فهم اللغة، Computer Vision التعرّف على الصور والوجوه، Chatbot برنامج محادثة.</li></ul>
-<div class="tip">💡 حسب منشورات المدرسين على تيليجرام: أغلب الدرجات على Windows وWord، ثم الفيروسات ونظم التشغيل، ودوال Excel، والإنترنت والبريد، والذكاء الاصطناعي — والاختصارات مهمة جداً.</div>`}
+<div class="tip">حسب منشورات المدرسين على تيليجرام: أغلب الدرجات على Windows وWord، ثم الفيروسات ونظم التشغيل، ودوال Excel، والإنترنت والبريد، والذكاء الاصطناعي — والاختصارات مهمة جداً.</div>`}
 ]}
 };

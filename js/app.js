@@ -10,11 +10,11 @@ const KEYS_AR=['أ','ب','ج','د'], KEYS_EN=['A','B','C','D'];
 
 /* ---------- إعداد المواد (حقائق موثقة من مواقع الجامعات الرسمية) ---------- */
 const SUBJ={
- arabic:{key:'arabic',name:'اللغة العربية',short:'العربية',icon:'📖',cls:'c-ar',color:'var(--ar)',n:60,min:60,code:'',
+ arabic:{key:'arabic',name:'اللغة العربية',short:'العربية',icon:'ع',cls:'c-ar',color:'var(--ar)',n:60,min:60,code:'',
    pass:[['ماجستير / دكتوراه — جميع التخصصات',50],['ماجستير — تخصص اللغة العربية',60],['دكتوراه — تخصص اللغة العربية',70]]},
- english:{key:'english',name:'اللغة الإنكليزية',short:'الإنكليزي',icon:'🔤',cls:'c-en',color:'var(--en)',n:40,min:60,code:'INELT',
+ english:{key:'english',name:'اللغة الإنكليزية',short:'الإنكليزي',icon:'En',cls:'c-en',color:'var(--en)',n:40,min:60,code:'INELT',
    pass:[['دبلوم عالي (علمي / إنساني)',50],['ماجستير — تخصصات إنسانية',50],['دكتوراه — تخصصات إنسانية',55],['ماجستير — تخصصات علمية',60],['دكتوراه — تخصصات علمية',65],['ماجستير — تخصصات طبية / لغة إنكليزية',70],['دكتوراه — تخصصات طبية / لغة إنكليزية',75]]},
- computer:{key:'computer',name:'الحاسوب',short:'الحاسوب',icon:'💻',cls:'c-co',color:'var(--co)',n:40,min:60,code:'INCPT',
+ computer:{key:'computer',name:'الحاسوب',short:'الحاسوب',icon:'PC',cls:'c-co',color:'var(--co)',n:40,min:60,code:'INCPT',
    pass:[['ماجستير — تخصصات إنسانية',50],['دكتوراه — تخصصات إنسانية',55],['ماجستير — تخصصات علمية',60],['دكتوراه — تخصصات علمية',65],['ماجستير — حاسبات',70],['دكتوراه — حاسبات',75]]}
 };
 const ORDER=['arabic','english','computer'];
@@ -54,31 +54,31 @@ function viewHome(){
  const best=ORDER.map(s=>bestOf(s));
  app.innerHTML=`
  <section class="hero"><div class="wrap fade">
-  <span class="pill">✨ محدّث للعام الدراسي 2026 – 2027</span>
-  <h1>اجتز الاختبار الوطني للدراسات العليا<br>بثقة وبدون تعقيد</h1>
-  <p class="lead">ملخصات مركّزة، وأكثر من ${BANK.arabic.length+BANK.english.length+BANK.computer.length} سؤال تدريبي مع الشرح، وامتحان تجريبي يحاكي الاختبار الحقيقي بالوقت وعدد الأسئلة — في اللغة العربية والإنكليزية والحاسوب.</p>
-  <div class="btns"><a class="btn btn-acc" href="#/mock">⏱️ ابدأ امتحاناً تجريبياً</a><a class="btn btn-white" href="#/study/arabic">📚 ابدأ المذاكرة</a></div>
+  <span class="eyebrow">العام الدراسي 2026 – 2027</span>
+  <h1>التحضير للاختبار الوطني الموحد<br>للمتقدمين للدراسات العليا</h1>
+  <p class="lead">ملخصات مركّزة، و${BANK.arabic.length+BANK.english.length+BANK.computer.length} سؤالاً تدريبياً مع الشرح، وامتحان تجريبي يحاكي الاختبار الحقيقي في الوقت وعدد الأسئلة — للغة العربية والإنكليزية والحاسوب.</p>
+  <div class="btns"><a class="btn btn-pri" href="#/mock">ابدأ امتحاناً تجريبياً</a><a class="btn btn-ghost" href="#/study/arabic">تصفّح الملخصات</a></div>
+  <div class="hero-stats">
+   <div class="stat"><b>3</b><span>اختبارات منفصلة</span></div>
+   <div class="stat"><b>60</b><span>دقيقة لكل اختبار</span></div>
+   <div class="stat"><b>60 · 40 · 40</b><span>أسئلة العربي · الإنكليزي · الحاسوب</span></div>
+   <div class="stat"><b>50</b><span>أدنى درجة اجتياز (من 100)</span></div>
+  </div>
  </div></section>
- <div class="wrap hero-stats"><div class="grid g4">
-  <div class="card stat"><b>3</b><span>اختبارات منفصلة: عربي، إنكليزي، حاسوب</span></div>
-  <div class="card stat"><b>60 د</b><span>مدة كل اختبار</span></div>
-  <div class="card stat"><b>140</b><span>سؤالاً: 60 عربي، 40 إنكليزي، 40 حاسوب</span></div>
-  <div class="card stat"><b>50+</b><span>أقل درجة اجتياز (تختلف حسب التخصص)</span></div>
- </div></div>
 
  <section class="sec"><div class="wrap">
   <h2>اختر المادة</h2><p class="sub">لكل مادة: ملخص، تدريب فوري بالشرح، وامتحان تجريبي كامل.</p>
   <div class="grid g3">${ORDER.map((s,i)=>{const S=SUBJ[s];return `
    <div class="card subj-card"><div class="ic ${S.cls}">${S.icon}</div>
     <h3>${S.name} ${S.code?`<span class="ltr tag gray">${S.code}</span>`:''}</h3>
-    <div class="meta"><span class="tag">${S.n} سؤال</span><span class="tag gold">${S.min} دقيقة</span><span class="tag blue">${BANK[s].length} سؤال تدريبي</span></div>
+    <div class="meta"><span class="tag">${S.n} سؤال</span><span class="tag">${S.min} دقيقة</span><span class="tag blue">${BANK[s].length} سؤال تدريبي</span></div>
     <div style="color:var(--mut);font-size:14px;margin-bottom:14px">${best[i]===null?'لم تجرّب امتحاناً بعد':'أفضل درجة لك: <b style="color:var(--pri)">'+fmt1(best[i])+'</b> / 100'}</div>
     <div class="btns"><a class="btn btn-sm btn-ghost" href="#/study/${s}">الملخص</a><a class="btn btn-sm btn-ghost" href="#/practice/${s}">تدريب</a><a class="btn btn-sm btn-pri" href="#/mock?s=${s}">امتحان تجريبي</a></div>
    </div>`;}).join('')}</div>
  </div></section>
 
  <section class="sec" style="padding-top:0"><div class="wrap grid g2">
-  <div class="card"><h3>📌 ما هو الاختبار الوطني؟</h3>
+  <div class="card"><h3>ما هو الاختبار الوطني؟</h3>
    <ul class="facts">
     <li>اختبارات موحدة تنظمها <b>وزارة التعليم العالي والبحث العلمي – دائرة البحث والتطوير</b>، واجتيازها شرط أساسي للتقديم على الدراسات العليا (دبلوم عالي، ماجستير، دكتوراه) داخل العراق.<span class="badge-src b-off">رسمي</span></li>
     <li>ثلاثة اختبارات منفصلة: <b>الإنكليزية (INELT)</b>، <b>الحاسوب (INCPT)</b>، و<b>اللغة العربية</b>.<span class="badge-src b-off">رسمي</span></li>
@@ -90,32 +90,32 @@ function viewHome(){
     <li>الإنكليزي غالباً 4 أجزاء × 10 أسئلة: قواعد، قطعة، وظائف اللغة، محادثة.<span class="badge-src b-tg">تيليجرام</span></li>
     <li>كثير من الطلبة يذكرون أن الأسئلة <b>تتكرر</b> من بنك الأسئلة، لذا التدريب المكثف مفيد جداً.<span class="badge-src b-tg">تيليجرام</span></li>
    </ul></div>
-  <div class="card"><h3>📝 خطوات الحجز</h3>
+  <div class="card"><h3>خطوات الحجز</h3>
    <ol class="steps">
     <li>ادخل موقع الحجز الرسمي <a href="https://inpt.rdd.edu.iq" target="_blank" rel="noopener" class="ltr">inpt.rdd.edu.iq</a> وأنشئ حساباً.</li>
     <li>اختر المادة والمركز الامتحاني (الجامعة) والموعد المناسب.</li>
     <li>أكّد الحجز وادفع الرسوم في المركز خلال <b>72 ساعة</b> من موعد الاختبار، وإلا يُلغى الحجز.</li>
     <li>احضر قبل الموعد (نصف ساعة إلى ساعة) مع <b>البطاقة الوطنية الموحدة</b> أو مستمسك أصلي. يُمنع إدخال الهاتف أو أي جهاز إلكتروني.</li>
    </ol>
-   <div class="note">⏰ الأوقات المعتادة: الساعة 10 صباحاً و12 ظهراً، والجدول الأسبوعي يختلف حسب المركز والكتاب الوزاري — تأكد من صفحة مركزك.</div>
+   <div class="note">الأوقات المعتادة: الساعة 10 صباحاً و12 ظهراً، والجدول الأسبوعي يختلف حسب المركز والكتاب الوزاري — تأكد من صفحة مركزك.</div>
   </div>
  </div></section>
 
  <section class="sec" style="padding-top:0"><div class="wrap"><div class="card">
-  <h3>🎯 درجات الاجتياز المطلوبة</h3><p class="sub mb0">حسب ضوابط الوزارة المنشورة في مواقع الجامعات (من 100).</p>
+  <h3>درجات الاجتياز المطلوبة</h3><p class="sub mb0">حسب ضوابط الوزارة المنشورة في مواقع الجامعات (من 100).</p>
   <div class="tabs mt" id="passTabs">${ORDER.map((s,i)=>`<button data-s="${s}" class="${i?'':'on'}">${SUBJ[s].name}</button>`).join('')}</div>
   <div id="passTable"></div>
  </div></div></section>
 
  <section class="sec" style="padding-top:0"><div class="wrap grid g2">
-  <div class="card"><h3>💡 نصائح سريعة للنجاح</h3><ul class="facts">
+  <div class="card"><h3>نصائح سريعة للنجاح</h3><ul class="facts">
    <li>ادرس الملخص أولاً، ثم تدرّب على أسئلة كل موضوع حتى تصل إلى 80% فأكثر.</li>
    <li>في الحاسوب: احفظ الاختصارات والمصطلحات <b>بالإنكليزي</b> لأن الأسئلة إنكليزية. ركّز على Windows وWord ثم الفيروسات ودوال Excel.</li>
    <li>في الإنكليزي: اقرأ الأسئلة قبل القطعة، وفي المحادثة ركّز على كلام المتحدث الأخير والتعابير الاصطلاحية.</li>
    <li>في العربي: 60 سؤالاً في 60 دقيقة = دقيقة لكل سؤال، لا تتوقف طويلاً عند سؤال واحد.</li>
    <li>لا تترك أي سؤال بلا إجابة — لا توجد درجة سالبة في أسئلة الاختيار من متعدد.</li>
    <li>قدّم امتحانين تجريبيين على الأقل قبل الموعد، وراجع أخطاءك من صفحة «نتائجي».</li></ul></div>
-  <div class="card"><h3>🔗 المصادر</h3><p style="font-size:14px;color:var(--mut)">المعلومات أعلاه مجمّعة من صفحات الجامعات العراقية الرسمية وأخبار الوزارة، مع تجارب الطلبة من قنوات تيليجرام العامة (مُعلَّمة بـ«تيليجرام»). اعتمد دائماً على إعلان مركزك الامتحاني.</p>
+  <div class="card"><h3>المصادر</h3><p style="font-size:14px;color:var(--mut)">المعلومات أعلاه مجمّعة من صفحات الجامعات العراقية الرسمية وأخبار الوزارة، مع تجارب الطلبة من قنوات تيليجرام العامة (مُعلَّمة بـ«تيليجرام»). اعتمد دائماً على إعلان مركزك الامتحاني.</p>
    <ul class="src-list">
     <li><a href="https://dcec.uobaghdad.edu.iq/?page_id=28276" target="_blank" rel="noopener">مركز التعليم المستمر – جامعة بغداد</a></li>
     <li><a href="https://uosamarra.edu.iq/uos-inpt/" target="_blank" rel="noopener">دليل الامتحانات الوطنية 2025-2026 – جامعة سامراء</a></li>
@@ -136,14 +136,14 @@ function viewStudy(s){
  if(!SUBJ[s])s='arabic';
  const N=NOTES[s];
  app.innerHTML=`<section class="sec"><div class="wrap fade">
-  <div class="subj-switch">${ORDER.map(x=>`<a href="#/study/${x}" class="${x===s?'on':''}">${SUBJ[x].icon} ${SUBJ[x].name}</a>`).join('')}</div>
+  <div class="subj-switch">${ORDER.map(x=>`<a href="#/study/${x}" class="${x===s?'on':''}">${SUBJ[x].name}</a>`).join('')}</div>
   <h2>${N.title}</h2><p class="sub">${N.sub}</p>
   <div class="study-layout">
    <aside class="card toc no-print"><b style="color:var(--nav)">المحتويات</b>
     ${N.sections.map((x,i)=>`<a href="javascript:void(0)" data-go="n${i}">${x.h}</a>`).join('')}
     <hr style="border:0;border-top:1px solid var(--bd)">
     <a class="btn btn-sm btn-pri" style="width:100%;margin-top:6px" href="#/practice/${s}">تدرّب على ${SUBJ[s].short}</a>
-    <a class="btn btn-sm btn-ghost" style="width:100%;margin-top:8px" href="files/${s}-notes.pdf" download>⬇️ تحميل PDF</a>
+    <a class="btn btn-sm btn-ghost" style="width:100%;margin-top:8px" href="files/${s}-notes.pdf" download>تحميل PDF</a>
    </aside>
    <div>${N.sections.map((x,i)=>`<div class="card note-sec" id="n${i}"><h3>${x.h}</h3><div class="${s==='english'?'ltr':''}">${x.html}</div></div>`).join('')}</div>
   </div></div></section>`;
@@ -176,17 +176,17 @@ function viewPractice(s){
  const S=SUBJ[s], topics=topicsOf(s), wrongN=(getWrong()[s]||[]).length;
  let sel={topic:'all',count:10};
  app.innerHTML=`<section class="sec"><div class="wrap fade" style="max-width:760px">
-  <div class="subj-switch">${ORDER.map(x=>`<a href="#/practice/${x}" class="${x===s?'on':''}">${SUBJ[x].icon} ${SUBJ[x].short}</a>`).join('')}</div>
+  <div class="subj-switch">${ORDER.map(x=>`<a href="#/practice/${x}" class="${x===s?'on':''}">${SUBJ[x].short}</a>`).join('')}</div>
   <h2>تدريب: ${S.name}</h2><p class="sub">اختر الموضوع وعدد الأسئلة.</p>
   <div class="card">
    <div class="field"><label>الموضوع</label><div class="choice-grid" id="tp">
     <button class="choice on" data-v="all">كل المواضيع<small>${BANK[s].length} سؤال</small></button>
     ${topics.map(t=>`<button class="choice" data-v="${esc(t)}">${TOPIC_AR[t]||t}<small>${BANK[s].filter(q=>q.t===t).length} سؤال</small></button>`).join('')}
-    <button class="choice" data-v="wrong" ${wrongN?'':'disabled style="opacity:.5"'}>🔁 أخطائي السابقة<small>${wrongN} سؤال</small></button>
+    <button class="choice" data-v="wrong" ${wrongN?'':'disabled style="opacity:.5"'}>أخطائي السابقة<small>${wrongN} سؤال</small></button>
    </div></div>
    <div class="field"><label>عدد الأسئلة</label><div class="choice-grid" id="ct">
     ${[10,20,30,0].map((n,i)=>`<button class="choice ${i?'':'on'}" data-v="${n}">${n||'الكل'}</button>`).join('')}</div></div>
-   <button class="btn btn-pri" id="go" style="width:100%">ابدأ التدريب ▶</button>
+   <button class="btn btn-pri" id="go" style="width:100%">ابدأ التدريب</button>
   </div></div></section>`;
  const bind=(id,key)=>$$('#'+id+' .choice').forEach(b=>b.onclick=()=>{if(b.disabled)return;$$('#'+id+' .choice').forEach(x=>x.classList.remove('on'));b.classList.add('on');sel[key]=key==='count'?+b.dataset.v:b.dataset.v;});
  bind('tp','topic');bind('ct','count');
@@ -204,7 +204,7 @@ function runPractice(s,qs){
   if(i>=qs.length)return finish();
   const q=qs[i], opts=prepOpts(q);
   app.innerHTML=`<section class="sec" style="padding-top:10px"><div class="wrap" style="max-width:820px">
-   <div class="quiz-top"><b>${SUBJ[s].icon} ${SUBJ[s].name}</b><div class="progress"><i style="width:${i/qs.length*100}%"></i></div><span class="tag ok">✔ ${correct}</span><span class="tag bad">✘ ${i-correct}</span></div>
+   <div class="quiz-top"><b>${SUBJ[s].name}</b><div class="progress"><i style="width:${i/qs.length*100}%"></i></div><span class="tag ok">صحيح ${correct}</span><span class="tag bad">خطأ ${i-correct}</span></div>
    ${qHTML(q,opts,()=> '',i,qs.length)}
    <div class="qnav-row"><a class="btn btn-ghost btn-sm" href="#/practice/${s}">إنهاء التدريب</a><button class="btn btn-pri" id="next" style="display:none">${i+1<qs.length?'السؤال التالي ←':'عرض النتيجة'}</button></div>
   </div></section>`;
@@ -213,7 +213,7 @@ function runPractice(s,qs){
    $$('.opt').forEach((x,j)=>{x.disabled=true;if(opts[j].correct)x.classList.add('right');});
    if(!ok)b.classList.add('wrong'); else correct++;
    bumpPractice(s,ok); markWrong(s,q.id,!ok); res.push(ok);
-   $('#exp').innerHTML=`<div class="explain ${ok?'ok':'bad'}"><b>${ok?'✔ إجابة صحيحة!':'✘ إجابة خاطئة.'}</b> ${ok?'':'الصحيح: <b class="'+(q.ltr?'ltr':'')+'">'+esc(q.o[0])+'</b><br>'}💡 ${esc(q.e)}</div>`;
+   $('#exp').innerHTML=`<div class="explain ${ok?'ok':'bad'}"><b>${ok?'إجابة صحيحة.':'إجابة خاطئة.'}</b> ${ok?'':'الصحيح: <b class="'+(q.ltr?'ltr':'')+'">'+esc(q.o[0])+'</b><br>'}${esc(q.e)}</div>`;
    $('#next').style.display='inline-flex'; $('#next').focus();
   });
   $('#next').onclick=()=>{i++;draw();};
@@ -221,7 +221,7 @@ function runPractice(s,qs){
  const finish=()=>{
   const pct=qs.length?correct/qs.length*100:0;
   app.innerHTML=`<section class="sec"><div class="wrap fade" style="max-width:640px"><div class="card res-head">
-   <h2>انتهى التدريب 🎉</h2>
+   <h2>انتهى التدريب </h2>
    <div class="gauge" style="--v:${pct};--c:${pct>=50?'var(--ok)':'var(--bad)'}"><div><b>${Math.round(pct)}%</b><span>${correct} من ${qs.length}</span></div></div>
    <p style="color:var(--mut)">${pct>=80?'ممتاز! أنت جاهز لتجربة امتحان كامل.':pct>=50?'جيد، استمر بالتدريب وراجع أخطاءك.':'راجع الملخص ثم أعد المحاولة، ستتحسن بسرعة.'}</p>
    <div class="btns" style="justify-content:center"><a class="btn btn-pri" href="#/practice/${s}">تدريب جديد</a><a class="btn btn-ghost" href="#/study/${s}">مراجعة الملخص</a><a class="btn btn-acc" href="#/mock?s=${s}">امتحان تجريبي</a></div>
@@ -238,15 +238,15 @@ function viewMockSetup(){
  const render=()=>{
   const subs=sel.mode==='full'?ORDER:[sel.mode];
   app.innerHTML=`<section class="sec"><div class="wrap fade" style="max-width:820px">
-   <h2>⏱️ الامتحان التجريبي</h2><p class="sub">يحاكي الاختبار الحقيقي: نفس عدد الأسئلة ونفس الوقت، أسئلة عشوائية من البنك، ولا تظهر الإجابات إلا بعد التسليم.</p>
+   <h2>الامتحان التجريبي</h2><p class="sub">يحاكي الاختبار الحقيقي: نفس عدد الأسئلة ونفس الوقت، أسئلة عشوائية من البنك، ولا تظهر الإجابات إلا بعد التسليم.</p>
    <div class="card">
     <div class="field"><label>اختر الامتحان</label><div class="choice-grid" id="md">
      ${ORDER.map(s=>`<button class="choice ${sel.mode===s?'on':''}" data-v="${s}">${SUBJ[s].icon} ${SUBJ[s].name}<small>${SUBJ[s].n} سؤال • ${SUBJ[s].min} دقيقة</small></button>`).join('')}
-     <button class="choice ${sel.mode==='full'?'on':''}" data-v="full">🏆 الاختبارات الثلاثة<small>140 سؤال • 3 أقسام × 60 دقيقة</small></button>
+     <button class="choice ${sel.mode==='full'?'on':''}" data-v="full">الاختبارات الثلاثة<small>140 سؤال • 3 أقسام × 60 دقيقة</small></button>
     </div></div>
     ${subs.map(s=>`<div class="field"><label>نوع دراستك في ${SUBJ[s].name} (لتحديد درجة الاجتياز)</label>
      <select data-s="${s}">${SUBJ[s].pass.map(p=>`<option value="${p[1]}" ${sel.req[s]==p[1]?'selected':''}>${p[0]} — ${p[1]} درجة</option>`).join('')}</select></div>`).join('')}
-    <div class="note" style="margin-bottom:16px">📋 <b>التعليمات:</b> المؤقّت يبدأ فور الضغط على «ابدأ». يمكنك التنقل بين الأسئلة ووضع علامة 🚩 للمراجعة. عند انتهاء الوقت يُسلَّم الامتحان تلقائياً. ${sel.mode==='full'?'كل قسم له وقته المستقل (60 دقيقة) كما في الواقع.':''}</div>
+    <div class="note" style="margin-bottom:16px"><b>التعليمات:</b> المؤقّت يبدأ فور الضغط على «ابدأ». يمكنك التنقل بين الأسئلة ووضع علامة للمراجعة. عند انتهاء الوقت يُسلَّم الامتحان تلقائياً. ${sel.mode==='full'?'كل قسم له وقته المستقل (60 دقيقة) كما في الواقع.':''}</div>
     <button class="btn btn-acc" id="start" style="width:100%;font-size:18px">ابدأ الامتحان الآن</button>
    </div></div></section>`;
   $$('#md .choice').forEach(b=>b.onclick=()=>{sel.mode=b.dataset.v;render();});
@@ -298,15 +298,15 @@ function viewExam(){
  if(!timerId)timerId=setInterval(tick,1000);
  const it=sec.qs[sec.cur], answered=sec.qs.filter(x=>x.ans!==null).length;
  app.innerHTML=`<div class="wrap">
-  <div class="exam-bar"><span class="ttl">${S.icon} امتحان ${S.name}${examState.sections.length>1?` — القسم ${examState.si+1} من ${examState.sections.length}`:''}</span>
+  <div class="exam-bar"><span class="ttl">امتحان ${S.name}${examState.sections.length>1?` — القسم ${examState.si+1} من ${examState.sections.length}`:''}</span>
    <span class="tag" style="background:rgba(255,255,255,.15);color:#fff">أُجيب ${answered} / ${sec.qs.length}</span>
    <span class="timer ${sec.timeLeft<=300?'low':''}" id="timer" title="الوقت المتبقي">${mmss(sec.timeLeft)}</span></div>
   <div class="exam-layout">
-   <div>${qHTML(it.q,it.opts,i=>it.ans===i?'sel':'',sec.cur,sec.qs.length,it.flag?'<span class="tag gold">🚩 للمراجعة</span>':'')}
+   <div>${qHTML(it.q,it.opts,i=>it.ans===i?'sel':'',sec.cur,sec.qs.length,it.flag?'<span class="tag gold">معلَّم للمراجعة</span>':'')}
     <div class="qnav-row">
      <button class="btn btn-ghost" id="prev" ${sec.cur===0?'disabled style="opacity:.5"':''}>→ السابق</button>
-     <button class="btn btn-ghost" id="flag">${it.flag?'إزالة العلامة':'🚩 علّم للمراجعة'}</button>
-     ${sec.cur<sec.qs.length-1?'<button class="btn btn-pri" id="next">التالي ←</button>':'<button class="btn btn-acc" id="submit2">تسليم القسم ✔</button>'}
+     <button class="btn btn-ghost" id="flag">${it.flag?'إزالة العلامة':'علّم للمراجعة'}</button>
+     ${sec.cur<sec.qs.length-1?'<button class="btn btn-pri" id="next">التالي ←</button>':'<button class="btn btn-acc" id="submit2">تسليم القسم</button>'}
     </div></div>
    <aside class="card palette"><b style="color:var(--nav)">خريطة الأسئلة</b>
     <div class="legend"><span><i style="background:var(--pri)"></i>مُجاب</span><span><i style="background:#fff;border:1px solid var(--bd)"></i>غير مُجاب</span><span><i style="background:var(--acc)"></i>للمراجعة</span></div>
@@ -328,7 +328,7 @@ function viewExam(){
 function confirmSubmit(sec){
  const un=sec.qs.filter(x=>x.ans===null).length, fl=sec.qs.filter(x=>x.flag).length;
  const m=document.createElement('div');m.className='modal-bg';
- m.innerHTML=`<div class="modal"><h3>هل تريد التسليم؟</h3><p>${un?`لديك <b style="color:var(--bad)">${un}</b> سؤال بدون إجابة.`:'أجبت عن جميع الأسئلة 👍'} ${fl?`<br>و<b>${fl}</b> سؤال معلَّم للمراجعة.`:''}</p>
+ m.innerHTML=`<div class="modal"><h3>هل تريد التسليم؟</h3><p>${un?`لديك <b style="color:var(--bad)">${un}</b> سؤال بدون إجابة.`:'أجبت عن جميع الأسئلة'} ${fl?`<br>و<b>${fl}</b> سؤال معلَّم للمراجعة.`:''}</p>
   <p style="color:var(--mut);font-size:14px">الوقت المتبقي: ${mmss(sec.timeLeft)}</p>
   <div class="btns" style="justify-content:center"><button class="btn btn-ghost" id="mNo">رجوع</button><button class="btn btn-acc" id="mYes">نعم، سلّم</button></div></div>`;
  document.body.appendChild(m);
@@ -342,7 +342,7 @@ function finishSection(){
   st.si++;
   const nx=SUBJ[st.sections[st.si].subj];
   app.innerHTML=`<section class="sec"><div class="wrap fade" style="max-width:560px"><div class="card center">
-   <h2>✔ انتهى قسم ${SUBJ[sec.subj].name}</h2><p>القسم التالي: <b>${nx.icon} ${nx.name}</b> — ${nx.n} سؤال في ${nx.min} دقيقة.</p>
+   <h2>انتهى قسم ${SUBJ[sec.subj].name}</h2><p>القسم التالي: <b>${nx.name}</b> — ${nx.n} سؤال في ${nx.min} دقيقة.</p>
    <p style="color:var(--mut)">خذ نفساً عميقاً، وعندما تكون جاهزاً اضغط للبدء.</p>
    <button class="btn btn-acc" id="nextSec">ابدأ القسم التالي</button></div></div></section>`;
   $('#nextSec').onclick=()=>viewExam();
@@ -373,14 +373,14 @@ function viewResult(id){
  const byId={};ORDER.forEach(s=>BANK[s].forEach(q=>byId[q.id]=q));
  const allPass=rec.parts.every(p=>p.pass);
  app.innerHTML=`<section class="sec"><div class="wrap fade" style="max-width:960px">
-  <h2>📊 نتيجة الامتحان التجريبي</h2><p class="sub">${new Date(rec.date).toLocaleString('ar-IQ',{dateStyle:'full',timeStyle:'short'})}</p>
-  ${rec.parts.length>1?`<div class="card center" style="margin-bottom:18px"><h3>${allPass?'🎉 مبروك! اجتزت الاختبارات الثلاثة':'لم تجتز جميع الاختبارات بعد — ركّز على المادة التي لم تجتزها'}</h3></div>`:''}
+  <h2>نتيجة الامتحان التجريبي</h2><p class="sub">${new Date(rec.date).toLocaleString('ar-IQ',{dateStyle:'full',timeStyle:'short'})}</p>
+  ${rec.parts.length>1?`<div class="card center" style="margin-bottom:18px"><h3>${allPass?' مبروك! اجتزت الاختبارات الثلاثة':'لم تجتز جميع الاختبارات بعد — ركّز على المادة التي لم تجتزها'}</h3></div>`:''}
   ${rec.parts.map((p,pi)=>{const S=SUBJ[p.subj];return `
   <div class="card" style="margin-bottom:22px" id="res-${p.subj}">
    <div class="grid g2" style="align-items:center">
     <div class="res-head"><div class="gauge" style="--v:${p.score};--c:${p.pass?'var(--ok)':'var(--bad)'}"><div><b>${fmt1(p.score)}</b><span>من 100</span></div></div>
-     <div class="verdict ${p.pass?'ok':'bad'}">${p.pass?'✔ ناجح':'✘ لم تجتز'} — المطلوب ${p.req}</div></div>
-    <div><h3>${S.icon} ${S.name}</h3>
+     <div class="verdict ${p.pass?'ok':'bad'}">${p.pass?'ناجح':'لم تجتز'} — المطلوب ${p.req}</div></div>
+    <div><h3>${S.name}</h3>
      <table class="t"><tr><td>الإجابات الصحيحة</td><td><b style="color:var(--ok)">${p.c}</b> من ${p.n}</td></tr>
       <tr><td>الإجابات الخاطئة</td><td><b style="color:var(--bad)">${p.w}</b></td></tr>
       <tr><td>بدون إجابة</td><td><b>${p.u}</b></td></tr>
@@ -405,7 +405,7 @@ function viewResult(id){
     <div class="${L}" style="font-weight:700">${esc(q.q)}</div>
     <div class="ans-line">إجابتك: ${it.your===null?'<span class="tag gray">لم تُجب</span>':`<b class="${L}" style="color:${it.ok?'var(--ok)':'var(--bad)'}">${esc(it.your)}</b>`}</div>
     ${it.ok?'':`<div class="ans-line">الإجابة الصحيحة: <b class="${L}" style="color:var(--ok)">${esc(q.o[0])}</b></div>`}
-    <div class="ans-line" style="color:var(--mut)">💡 ${esc(q.e)}</div></div>`;}).join(''):'<div class="empty">لا توجد أخطاء — أداء رائع! 🌟</div>';
+    <div class="ans-line" style="color:var(--mut)">${esc(q.e)}</div></div>`;}).join(''):'<div class="empty">لا توجد أخطاء — أداء رائع!</div>';
  };
  rec.parts.forEach((p,pi)=>drawRev(pi,'bad'));
  $$('.tabs[data-p]').forEach(t=>$$('button',t).forEach(b=>b.onclick=()=>{$$('button',t).forEach(x=>x.classList.remove('on'));b.classList.add('on');drawRev(+t.dataset.p,b.dataset.f);}));
@@ -419,9 +419,9 @@ function viewFiles(){
   ['arabic-bank','بنك أسئلة العربي مع الإجابات',BANK.arabic.length+' سؤالاً مع الإجابة والشرح','var(--ar)'],
   ['english-bank','English Question Bank + Answers',BANK.english.length+' questions with answers','var(--en)'],
   ['computer-bank','بنك أسئلة الحاسوب مع الإجابات',BANK.computer.length+' سؤالاً (بالإنكليزية) مع الشرح','var(--co)']];
- app.innerHTML=`<section class="sec"><div class="wrap fade"><h2>📁 ملفات للتحميل</h2><p class="sub">ملفات PDF جاهزة للطباعة أو المذاكرة على الهاتف بدون إنترنت.</p>
+ app.innerHTML=`<section class="sec"><div class="wrap fade"><h2>ملفات للتحميل</h2><p class="sub">ملفات PDF جاهزة للطباعة أو المذاكرة على الهاتف بدون إنترنت.</p>
   <div class="grid g3">${F.map(f=>`<div class="card files-card"><div class="fi" style="background:${f[3]}">PDF</div><div style="flex:1"><h3 style="font-size:17px;margin:0">${f[1]}</h3><div style="color:var(--mut);font-size:14px">${f[2]}</div>
-   <a class="btn btn-sm btn-pri" style="margin-top:8px" href="files/${f[0]}.pdf" download>⬇️ تحميل</a> <a class="btn btn-sm btn-ghost" style="margin-top:8px" href="files/${f[0]}.pdf" target="_blank">عرض</a></div></div>`).join('')}</div>
+   <a class="btn btn-sm btn-pri" style="margin-top:8px" href="files/${f[0]}.pdf" download>تحميل</a> <a class="btn btn-sm btn-ghost" style="margin-top:8px" href="files/${f[0]}.pdf" target="_blank">عرض</a></div></div>`).join('')}</div>
   <div class="note mt">ملاحظة: الأسئلة في هذه الملفات نماذج تدريبية مكتوبة على نمط الاختبار الوطني ومراجَعة بعناية، وليست أسئلة الوزارة الرسمية.</div>
  </div></section>`;
 }
@@ -429,8 +429,8 @@ function viewFiles(){
 /* ---------- نتائجي ---------- */
 function viewProgress(){
  const h=getHist(), P=store.get('practice',{}), W=getWrong();
- app.innerHTML=`<section class="sec"><div class="wrap fade"><h2>📈 نتائجي وتقدّمي</h2><p class="sub">تُحفظ نتائجك على جهازك فقط (في المتصفح).</p>
-  <div class="grid g3">${ORDER.map(s=>{const b=bestOf(s),p=P[s];return `<div class="card"><h3>${SUBJ[s].icon} ${SUBJ[s].name}</h3>
+ app.innerHTML=`<section class="sec"><div class="wrap fade"><h2>نتائجي وتقدّمي</h2><p class="sub">تُحفظ نتائجك على جهازك فقط (في المتصفح).</p>
+  <div class="grid g3">${ORDER.map(s=>{const b=bestOf(s),p=P[s];return `<div class="card"><h3>${SUBJ[s].name}</h3>
    <div>أفضل امتحان: <b style="color:var(--pri)">${b===null?'—':fmt1(b)+' / 100'}</b></div>
    <div>أسئلة التدريب: <b>${p?p.a:0}</b> ${p?`(صواب ${Math.round(p.c/p.a*100)}%)`:''}</div>
    <div>أسئلة تحتاج مراجعة: <b style="color:var(--bad)">${(W[s]||[]).length}</b></div>
@@ -441,7 +441,7 @@ function viewProgress(){
     <td>${r.parts.map(p=>`${SUBJ[p.subj].short}: <b>${fmt1(p.score)}</b>`).join(' • ')}</td>
     <td>${r.parts.every(p=>p.pass)?'<span class="tag ok">ناجح</span>':'<span class="tag bad">لم يجتز</span>'}</td>
     <td><a class="btn btn-sm btn-ghost" href="#/result/${r.id}">التفاصيل</a></td></tr>`).join('')}</table></div>
-   <button class="btn btn-sm btn-ghost mt" id="clr">🗑️ مسح السجل</button>`:'<div class="empty">لم تقدّم أي امتحان تجريبي بعد. <a href="#/mock">ابدأ الآن</a></div>'}
+   <button class="btn btn-sm btn-ghost mt" id="clr">مسح السجل</button>`:'<div class="empty">لم تقدّم أي امتحان تجريبي بعد. <a href="#/mock">ابدأ الآن</a></div>'}
   </div></div></section>`;
  $('#clr')&&($('#clr').onclick=()=>{if(confirm('مسح كل النتائج والتقدم؟')){['history','practice','wrong'].forEach(k=>localStorage.removeItem('ine_'+k));viewProgress();}});
 }
