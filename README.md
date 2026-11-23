@@ -15,3 +15,7 @@ for d in arabic-notes english-notes computer-notes arabic-bank english-bank comp
   google-chrome --headless=new --no-sandbox --no-pdf-header-footer --virtual-time-budget=4000 \
     --print-to-pdf=files/$d.pdf "file://$PWD/print.html?doc=$d"; done
 ```
+
+
+## تحديث v3 — أسئلة قناة @watani8
+أُضيف 297 سؤالاً مدققاً من قناة تيليجرام t.me/watani8 (أسئلة الاختبارات الفعلية لعام 2026 كما نقلها الطلبة + استطلاعات القناة + 5 قطع قراءة جديدة) في `js/data-watani8.js`، وكل سؤال مربوط برابط منشوره. البنك الآن 702 سؤالاً (عربي 250، إنكليزي 203، حاسوب 249). التفاصيل في RESEARCH-NOTES.md.

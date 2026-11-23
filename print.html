@@ -23,11 +23,11 @@ th{background:#f9fafb;font-weight:600}
 .tip{background:#eef3f7;border-radius:8px;padding:8px 10px;margin-top:6px}
 .q{border:1px solid #e1e6ef;border-radius:8px;padding:8px 10px;margin-bottom:7px;break-inside:avoid}
 .q .t{font-size:10.5px;color:#667085}.q ol{margin:4px 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
-.q .a{color:#15803d;font-weight:700}.q .e{color:#555;font-size:11.5px}
+.q b{white-space:pre-line}.q .a{color:#15803d;font-weight:700}.q .e{color:#555;font-size:11.5px}
 .passage{background:#fffaf0;border:1px dashed #e9cf8f;border-radius:8px;padding:8px 10px;margin:8px 0;break-inside:avoid}
 .foot{margin-top:16px;color:#667085;font-size:10.5px;text-align:center}
 </style></head><body><div id="out"></div>
-<script src="js/data-arabic.js"></script><script src="js/data-english.js"></script><script src="js/data-computer.js"></script><script src="js/notes.js"></script>
+<script src="js/data-arabic.js"></script><script src="js/data-english.js"></script><script src="js/data-computer.js"></script><script src="js/data-watani8.js"></script><script src="js/notes.js"></script>
 <script>
 const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 const doc=(new URLSearchParams(location.search).get('doc')||'arabic-notes').split('-');
@@ -48,7 +48,7 @@ if(kind==='notes'){
   const r=(i*3+1)%4, opts=q.o.map((o,j)=>({o,c:j===0})); const rot=opts.slice(r).concat(opts.slice(0,r));
   const ci=rot.findIndex(x=>x.c);
   html+=`<div class="q"><div class="t">${q.id}</div><div class="${L?'ltr':''}"><b>${i+1}. ${esc(q.q)}</b><ol type="${L?'A':'1'}" style="list-style:none">${rot.map((x,j)=>`<li>${keys[j]}) ${esc(x.o)}</li>`).join('')}</ol></div>
-   <div class="a ${L?'ltr':''}">✔ ${L?'Answer':'الإجابة'}: ${keys[ci]}) ${esc(q.o[0])}</div><div class="e">${esc(q.e)}</div></div>`;});});
+   <div class="a ${L?'ltr':''}">✔ ${L?'Answer':'الإجابة'}: ${keys[ci]}) ${esc(q.o[0])}</div><div class="e">${esc(q.e)}${q.src?' — المصدر: '+q.src.replace('https://',''):''}</div></div>`;});});
  out.innerHTML=html+foot;
 }
 document.title=doc.join('-');

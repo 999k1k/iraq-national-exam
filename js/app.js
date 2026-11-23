@@ -123,7 +123,7 @@ function viewHome(){
     <li><a href="https://ikr.atu.edu.iq/%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1-%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%8A-%D8%A7%D9%84%D8%B9%D8%B1%D8%A7%D9%82%D9%8A-%D8%A7%D9%84%D9%85%D9%88%D8%AD%D8%AF/" target="_blank" rel="noopener">كلية البوليتكنك – كربلاء</a></li>
     <li><a href="https://www.mawazin.net/Details.aspx?jimare=270267" target="_blank" rel="noopener">موازين نيوز: ضوابط 2026-2027 (13/11/2025)</a></li>
     <li><a href="https://conursing.uobaghdad.edu.iq/?p=35901" target="_blank" rel="noopener">الجدول الأسبوعي المعتمد – كلية التمريض/جامعة بغداد</a></li>
-    <li>تيليجرام: <a href="https://t.me/s/alaikhtibarhdhkeoe" target="_blank" rel="noopener">@alaikhtibarhdhkeoe</a>، <a href="https://t.me/s/ksnclnd" target="_blank" rel="noopener">@ksnclnd</a>، <a href="https://t.me/s/nationalscore100" target="_blank" rel="noopener">@nationalscore100</a>، <a href="https://t.me/s/arabicnoorali" target="_blank" rel="noopener">@arabicnoorali</a>، <a href="https://t.me/s/EA99a" target="_blank" rel="noopener">@EA99a</a>، <a href="https://t.me/s/flakavfs" target="_blank" rel="noopener">@flakavfs</a></li>
+    <li>تيليجرام: <a href="https://t.me/s/alaikhtibarhdhkeoe" target="_blank" rel="noopener">@alaikhtibarhdhkeoe</a>، <a href="https://t.me/s/ksnclnd" target="_blank" rel="noopener">@ksnclnd</a>، <a href="https://t.me/s/nationalscore100" target="_blank" rel="noopener">@nationalscore100</a>، <a href="https://t.me/s/arabicnoorali" target="_blank" rel="noopener">@arabicnoorali</a>، <a href="https://t.me/s/EA99a" target="_blank" rel="noopener">@EA99a</a>، <a href="https://t.me/s/flakavfs" target="_blank" rel="noopener">@flakavfs</a>، <a href="https://t.me/s/watani8" target="_blank" rel="noopener">@watani8</a> (أسئلة الاختبارات الفعلية 2026 المنقولة عن الطلبة، وقطع القراءة)</li>
    </ul></div>
  </div></section>`;
  const draw=s=>{$('#passTable').innerHTML=`<table class="t"><tr><th>نوع الدراسة / التخصص</th><th>درجة الاجتياز</th></tr>${SUBJ[s].pass.map(p=>`<tr><td>${p[0]}</td><td><b>${p[1]}</b></td></tr>`).join('')}</table>`;};
@@ -151,6 +151,7 @@ function viewStudy(s){
 }
 
 /* ---------- عرض سؤال ---------- */
+const srcLink=q=>q.src?` <a class="src-link" href="${q.src}" target="_blank" rel="noopener">المصدر: تيليجرام <bdi dir="ltr">${q.src.replace('https://t.me/','@')}</bdi></a>`:'';
 function qHTML(q,opts,state,idx,total,extra){
  const isL=q.ltr, keys=isL?KEYS_EN:KEYS_AR;
  const P=q.p&&window.PASSAGES[q.p];
@@ -213,7 +214,7 @@ function runPractice(s,qs){
    $$('.opt').forEach((x,j)=>{x.disabled=true;if(opts[j].correct)x.classList.add('right');});
    if(!ok)b.classList.add('wrong'); else correct++;
    bumpPractice(s,ok); markWrong(s,q.id,!ok); res.push(ok);
-   $('#exp').innerHTML=`<div class="explain ${ok?'ok':'bad'}"><b>${ok?'إجابة صحيحة.':'إجابة خاطئة.'}</b> ${ok?'':'الصحيح: <b class="'+(q.ltr?'ltr':'')+'">'+esc(q.o[0])+'</b><br>'}${esc(q.e)}</div>`;
+   $('#exp').innerHTML=`<div class="explain ${ok?'ok':'bad'}"><b>${ok?'إجابة صحيحة.':'إجابة خاطئة.'}</b> ${ok?'':'الصحيح: <b class="'+(q.ltr?'ltr':'')+'">'+esc(q.o[0])+'</b><br>'}${esc(q.e)}${srcLink(q)}</div>`;
    $('#next').style.display='inline-flex'; $('#next').focus();
   });
   $('#next').onclick=()=>{i++;draw();};
@@ -264,7 +265,7 @@ function buildSection(s){
  if(s==='english'){
   const pass=shuffle(Object.keys(PASSAGES)).slice(0,2);
   qs=[...pick(by('Grammar'),8),...pick(by('Vocabulary'),2),...pick(by('Language Functions'),10),...pick(by('Conversation'),10),
-      ...pass.flatMap(p=>B.filter(q=>q.p===p))];
+      ...pass.flatMap(p=>pick(B.filter(q=>q.p===p),5))];
  }else if(s==='computer'){
   const plan={'Computer Basics':4,'Windows 10':8,'Security & Viruses':4,'MS Word 2016':8,'MS Excel 2016':6,'MS PowerPoint 2016':4,'Internet & Email':4,'Artificial Intelligence':2};
   Object.keys(plan).forEach(t=>qs.push(...pick(by(t),plan[t])));
@@ -405,7 +406,7 @@ function viewResult(id){
     <div class="${L}" style="font-weight:700">${esc(q.q)}</div>
     <div class="ans-line">إجابتك: ${it.your===null?'<span class="tag gray">لم تُجب</span>':`<b class="${L}" style="color:${it.ok?'var(--ok)':'var(--bad)'}">${esc(it.your)}</b>`}</div>
     ${it.ok?'':`<div class="ans-line">الإجابة الصحيحة: <b class="${L}" style="color:var(--ok)">${esc(q.o[0])}</b></div>`}
-    <div class="ans-line" style="color:var(--mut)">${esc(q.e)}</div></div>`;}).join(''):'<div class="empty">لا توجد أخطاء — أداء رائع!</div>';
+    <div class="ans-line" style="color:var(--mut)">${esc(q.e)}${srcLink(q)}</div></div>`;}).join(''):'<div class="empty">لا توجد أخطاء — أداء رائع!</div>';
  };
  rec.parts.forEach((p,pi)=>drawRev(pi,'bad'));
  $$('.tabs[data-p]').forEach(t=>$$('button',t).forEach(b=>b.onclick=()=>{$$('button',t).forEach(x=>x.classList.remove('on'));b.classList.add('on');drawRev(+t.dataset.p,b.dataset.f);}));
