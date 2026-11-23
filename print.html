@@ -14,9 +14,9 @@
 
 body{font-family:'Plex','Noto Sans Arabic',Tahoma,sans-serif;color:#111827;font-size:12px;line-height:1.8}
 .ltr{direction:ltr;text-align:left;font-family:'Inter','Plex',Arial,sans-serif;line-height:1.6}
-.cover{border-top:4px solid #0f3d5e;border-bottom:1px solid #e5e7eb;padding:16px 0 14px;margin-bottom:18px}
-.cover h1{margin:0;font-size:24px;color:#0f3d5e;font-weight:700}.cover p{margin:4px 0 0;color:#4b5563}
-h2{color:#0f3d5e;border-bottom:1px solid #e5e7eb;padding-bottom:4px;font-size:16px;font-weight:700;margin:18px 0 8px;break-after:avoid}
+.cover{border-top:4px solid #155e75;border-bottom:1px solid #e5e7eb;padding:16px 0 14px;margin-bottom:18px}
+.cover h1{margin:0;font-size:24px;color:#155e75;font-weight:700}.cover p{margin:4px 0 0;color:#4b5563}
+h2{color:#155e75;border-bottom:1px solid #e5e7eb;padding-bottom:4px;font-size:16px;font-weight:700;margin:18px 0 8px;break-after:avoid}
 table{width:100%;border-collapse:collapse;margin:6px 0;break-inside:avoid}
 th,td{border:1px solid #d6dce8;padding:5px 7px;text-align:inherit;vertical-align:top}
 th{background:#f9fafb;font-weight:600}
@@ -27,7 +27,8 @@ th{background:#f9fafb;font-weight:600}
 .passage{background:#fffaf0;border:1px dashed #e9cf8f;border-radius:8px;padding:8px 10px;margin:8px 0;break-inside:avoid}
 .foot{margin-top:16px;color:#667085;font-size:10.5px;text-align:center}
 </style></head><body><div id="out"></div>
-<script src="js/data-arabic.js"></script><script src="js/data-english.js"></script><script src="js/data-computer.js"></script><script src="js/data-watani8.js"></script><script src="js/data-pdfs.js"></script><script src="js/notes.js"></script>
+<script>window.BANK={};window.PASSAGES={};window.__bankLoad=function(s,d){Object.assign(PASSAGES,d.passages||{});BANK[s]=d.items.map(function(x){var r=x[5]>=0?d.sources[x[5]]:null;return {id:x[0],t:x[1],q:x[2],o:x[3],e:x[4],src:r&&r.u||null,srcName:r&&r.n||null,p:x[6]||null,ltr:s!=='arabic'};});};</script>
+<script src="js/bank/arabic.js"></script><script src="js/bank/english.js"></script><script src="js/bank/computer.js"></script><script src="js/notes.js"></script>
 <script>
 const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 const doc=(new URLSearchParams(location.search).get('doc')||'arabic-notes').split('-');
