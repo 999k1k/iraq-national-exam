@@ -124,6 +124,7 @@ function viewHome(){
     <li><a href="https://www.mawazin.net/Details.aspx?jimare=270267" target="_blank" rel="noopener">موازين نيوز: ضوابط 2026-2027 (13/11/2025)</a></li>
     <li><a href="https://conursing.uobaghdad.edu.iq/?p=35901" target="_blank" rel="noopener">الجدول الأسبوعي المعتمد – كلية التمريض/جامعة بغداد</a></li>
     <li>تيليجرام: <a href="https://t.me/s/alaikhtibarhdhkeoe" target="_blank" rel="noopener">@alaikhtibarhdhkeoe</a>، <a href="https://t.me/s/ksnclnd" target="_blank" rel="noopener">@ksnclnd</a>، <a href="https://t.me/s/nationalscore100" target="_blank" rel="noopener">@nationalscore100</a>، <a href="https://t.me/s/arabicnoorali" target="_blank" rel="noopener">@arabicnoorali</a>، <a href="https://t.me/s/EA99a" target="_blank" rel="noopener">@EA99a</a>، <a href="https://t.me/s/flakavfs" target="_blank" rel="noopener">@flakavfs</a>، <a href="https://t.me/s/watani8" target="_blank" rel="noopener">@watani8</a> (أسئلة الاختبارات الفعلية 2026 المنقولة عن الطلبة، وقطع القراءة)</li>
+    <li>ملفات PDF من قناة @watani8: «دليل أسئلة اللغة العربية»، «بنك أسئلة الاختبار الوطني - القواعد والمحادثة والوظائف اللغوية»، «Computer MCQs - Final Bilingual Color Cards» (أُضيفت أسئلتها بعد مراجعة الإجابات وحذف المكرر)</li>
    </ul></div>
  </div></section>`;
  const draw=s=>{$('#passTable').innerHTML=`<table class="t"><tr><th>نوع الدراسة / التخصص</th><th>درجة الاجتياز</th></tr>${SUBJ[s].pass.map(p=>`<tr><td>${p[0]}</td><td><b>${p[1]}</b></td></tr>`).join('')}</table>`;};
@@ -151,7 +152,7 @@ function viewStudy(s){
 }
 
 /* ---------- عرض سؤال ---------- */
-const srcLink=q=>q.src?` <a class="src-link" href="${q.src}" target="_blank" rel="noopener">المصدر: تيليجرام <bdi dir="ltr">${q.src.replace('https://t.me/','@')}</bdi></a>`:'';
+const srcLink=q=>q.src?` <a class="src-link" href="${q.src}" target="_blank" rel="noopener">المصدر: تيليجرام <bdi dir="ltr">${q.src.replace('https://t.me/','@')}</bdi></a>`:q.srcName?` <span class="src-link">المصدر: ملف <bdi>«${esc(q.srcName)}»</bdi></span>`:'';
 function qHTML(q,opts,state,idx,total,extra){
  const isL=q.ltr, keys=isL?KEYS_EN:KEYS_AR;
  const P=q.p&&window.PASSAGES[q.p];

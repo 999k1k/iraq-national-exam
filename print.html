@@ -27,7 +27,7 @@ th{background:#f9fafb;font-weight:600}
 .passage{background:#fffaf0;border:1px dashed #e9cf8f;border-radius:8px;padding:8px 10px;margin:8px 0;break-inside:avoid}
 .foot{margin-top:16px;color:#667085;font-size:10.5px;text-align:center}
 </style></head><body><div id="out"></div>
-<script src="js/data-arabic.js"></script><script src="js/data-english.js"></script><script src="js/data-computer.js"></script><script src="js/data-watani8.js"></script><script src="js/notes.js"></script>
+<script src="js/data-arabic.js"></script><script src="js/data-english.js"></script><script src="js/data-computer.js"></script><script src="js/data-watani8.js"></script><script src="js/data-pdfs.js"></script><script src="js/notes.js"></script>
 <script>
 const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 const doc=(new URLSearchParams(location.search).get('doc')||'arabic-notes').split('-');
@@ -48,7 +48,7 @@ if(kind==='notes'){
   const r=(i*3+1)%4, opts=q.o.map((o,j)=>({o,c:j===0})); const rot=opts.slice(r).concat(opts.slice(0,r));
   const ci=rot.findIndex(x=>x.c);
   html+=`<div class="q"><div class="t">${q.id}</div><div class="${L?'ltr':''}"><b>${i+1}. ${esc(q.q)}</b><ol type="${L?'A':'1'}" style="list-style:none">${rot.map((x,j)=>`<li>${keys[j]}) ${esc(x.o)}</li>`).join('')}</ol></div>
-   <div class="a ${L?'ltr':''}">✔ ${L?'Answer':'الإجابة'}: ${keys[ci]}) ${esc(q.o[0])}</div><div class="e">${esc(q.e)}${q.src?' — المصدر: '+q.src.replace('https://',''):''}</div></div>`;});});
+   <div class="a ${L?'ltr':''}">✔ ${L?'Answer':'الإجابة'}: ${keys[ci]}) ${esc(q.o[0])}</div><div class="e">${esc(q.e)}${q.src?' — المصدر: '+q.src.replace('https://',''):q.srcName?' — المصدر: ملف «'+esc(q.srcName)+'»':''}</div></div>`;});});
  out.innerHTML=html+foot;
 }
 document.title=doc.join('-');
